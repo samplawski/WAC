@@ -7,7 +7,7 @@ export default defineConfig({
   },
   ignore: {
     customPatterns: [
-      "repomix-output.txt",
+      "repomix-output_wac - starter 2026.09.16.txt",
       "repomix-output_wac.txt",
       "**/*.svg",
     ],
