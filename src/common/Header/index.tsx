@@ -6,12 +6,15 @@ import {
   Navigation,
   RightSection,
   Wrapper,
+  MenuList,
+  MenuWrapper,
 } from "./styled";
 
 const Header = () => {
   const [navigationMenu, setNavigationMenu] = useState(false);
   const handleNavigationMenu = () => {
     setNavigationMenu(!navigationMenu);
+    console.log("kliknięto Menu");
   };
 
   return (
@@ -20,7 +23,22 @@ const Header = () => {
       <Logo>WAC</Logo>
       <RightSection>
         <Navigation>
-          <button onClick={handleNavigationMenu}>Nawigacja</button>
+          <MenuWrapper>
+            {" "}
+            <button
+              aria-expanded={navigationMenu}
+              onClick={handleNavigationMenu}
+            >
+              {navigationMenu ? "menu" : "nume"}
+            </button>
+            {navigationMenu && (
+              <MenuList>
+                <li>Strona główna</li>
+                <li>O nas</li>
+                <li>Kontakt</li>
+              </MenuList>
+            )}
+          </MenuWrapper>
         </Navigation>
         <Login>Login</Login>
       </RightSection>

@@ -32,6 +32,21 @@ export const Navigation = styled.nav`
   padding: 3px;
   margin: 2px;
   border: 1px solid purple;
+  position: relative;
+`;
+
+export const MenuWrapper = styled.div`
+  position: relative;
+`;
+
+export const MenuList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  margin-top: 6px;
+  left: 0;
 `;
 
 export const Login = styled.p`
