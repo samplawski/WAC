@@ -23,7 +23,6 @@ export const RightSection = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* justify-content: space-evenly; */
   align-items: center;
   gap: 10px;
 `;
@@ -40,13 +39,36 @@ export const MenuWrapper = styled.div`
 `;
 
 export const MenuList = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  /* 1. Pozycjonowanie */
   position: absolute;
   top: 100%;
+  right: 0;
+
+  /* 2. Odstępy i model pudełkowy */
+  margin: 0;
   margin-top: 6px;
-  left: 0;
+  padding: 8px;
+  box-sizing: border-box;
+
+  /* 3. Rozmiar */
+  width: max-content;
+  max-width: 280px;
+
+  /* 4. Wygląd */
+  background-color: ${({ theme }) => theme.colors.surface};
+
+  /* 5. Wygląd listy */
+  list-style: none;
+`;
+
+export const MenuItem = styled.li`
+  padding: 4px;
+  padding-left: 20px;
+  text-indent: -16px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
 `;
 
 export const Login = styled.p`

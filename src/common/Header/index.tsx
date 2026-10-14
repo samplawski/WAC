@@ -6,8 +6,9 @@ import {
   Navigation,
   RightSection,
   Wrapper,
-  MenuList,
   MenuWrapper,
+  MenuList,
+  MenuItem,
 } from "./styled";
 
 const Header = () => {
@@ -29,13 +30,13 @@ const Header = () => {
               aria-expanded={navigationMenu}
               onClick={handleNavigationMenu}
             >
-              {navigationMenu ? "menu" : "nume"}
+              {navigationMenu ? "nume" : "menu"}
             </button>
             {navigationMenu && (
               <MenuList>
-                <li>Strona główna</li>
-                <li>O nas</li>
-                <li>Kontakt</li>
+                <MenuItem>Strona główna</MenuItem>
+                <MenuItem>O nas</MenuItem>
+                <MenuItem>Strona główna — bardzo długa nazwa testowa</MenuItem>
               </MenuList>
             )}
           </MenuWrapper>
