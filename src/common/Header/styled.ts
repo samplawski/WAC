@@ -71,6 +71,12 @@ export const MenuItem = styled.li`
   }
 `;
 
+export const MenuLink = styled.a`
+  display: block;
+  color: inherit;
+  text-decoration: none;
+`;
+
 export const Login = styled.p`
   padding: 3px;
   margin: 2px;

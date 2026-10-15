@@ -9,6 +9,7 @@ import {
   MenuWrapper,
   MenuList,
   MenuItem,
+  MenuLink,
 } from "./styled";
 
 const Header = () => {
@@ -53,16 +54,38 @@ const Header = () => {
         <Navigation>
           <MenuWrapper ref={menuWrapperRef}>
             <button
+              type="button"
               aria-expanded={navigationMenu}
+              aria-controls="navigation-menu"
               onClick={handleNavigationMenu}
             >
-              {navigationMenu ? "nume" : "menu"}
+              Menu
             </button>
             {navigationMenu && (
-              <MenuList>
-                <MenuItem>Strona główna</MenuItem>
-                <MenuItem>O nas</MenuItem>
-                <MenuItem>Strona główna — bardzo długa nazwa testowa</MenuItem>
+              <MenuList id="navigation-menu">
+                <MenuItem>
+                  <MenuLink href="/">Strona główna</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">Kameralny</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">Męski</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">Kalendarium</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">Nuty</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">Członkowie</MenuLink>
+                </MenuItem>
+                <MenuItem>
+                  <MenuLink href="/">
+                    Strona główna — bardzo długa nazwa testow
+                  </MenuLink>
+                </MenuItem>
               </MenuList>
             )}
           </MenuWrapper>
