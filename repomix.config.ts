@@ -9,6 +9,7 @@ export default defineConfig({
     customPatterns: [
       "repomix-output_wac - starter 2026.09.16.txt",
       "repomix-output_wac.txt",
+      "WAC - opis i założenia.docx",
       "**/*.svg",
     ],
   },
