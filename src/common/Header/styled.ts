@@ -71,10 +71,34 @@ export const MenuItem = styled.li`
   }
 `;
 
+export const MenuGroup = styled.li`
+  width: 100%;
+`;
+
+export const MenuGroupButton = styled.button`
+  width: 100%;
+  border: none;
+  text-align: left;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
+`;
+
+export const SubMenuList = styled.ul`
+  margin: 0;
+  padding-left: 16px;
+  list-style: none;
+`;
+
 export const MenuLink = styled.a`
   display: block;
   color: inherit;
   text-decoration: none;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
 `;
 
 export const Login = styled.p`
