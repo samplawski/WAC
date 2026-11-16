@@ -11,6 +11,13 @@ export const Clock = styled.p`
   text-align: left;
   border: 1px solid red;
 `;
+
+export const Login = styled.p`
+  padding: 3px;
+  margin: 2px;
+  border: 1px solid black;
+`;
+
 export const Logo = styled.h1`
   justify-self: center;
   text-align: center;
@@ -38,52 +45,60 @@ export const MenuWrapper = styled.div`
   position: relative;
 `;
 
-export const MenuList = styled.ul`
-  /* 1. Pozycjonowanie */
+export const PopoverMenu = styled.nav`
   position: absolute;
-  top: 100%;
-  right: 0;
+  position-area: bottom;
+  justify-self: end;
 
-  /* 2. Odstępy i model pudełkowy */
-  margin: 0;
-  margin-top: 6px;
+  margin: 6px 0 0;
   padding: 8px;
-  box-sizing: border-box;
-
-  /* 3. Rozmiar */
-  width: max-content;
+  min-width: 200px;
   max-width: 280px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 
-  /* 4. Wygląd */
   background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
 
-  /* 5. Wygląd listy */
-  list-style: none;
-`;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
 
-export const MenuItem = styled.li`
-  padding: 4px;
-  padding-left: 20px;
-  text-indent: -16px;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-  &:hover {
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  a,
+  button {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover,
+  button:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }
 `;
 
-export const MenuGroup = styled.li`
-  width: 100%;
-`;
-
-export const MenuGroupButton = styled.button`
-  width: 100%;
-  border: none;
-  text-align: left;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
-  }
-`;
+// export const ChamberButton = styled.button`
+//   anchor-name: --chamber-button;
+// `;
 
 export const SubMenuList = styled.ul`
   margin: 0;
@@ -91,7 +106,7 @@ export const SubMenuList = styled.ul`
   list-style: none;
 `;
 
-export const MenuLink = styled.a`
+export const SubMenuLink = styled.a`
   display: block;
   color: inherit;
   text-decoration: none;
@@ -101,8 +116,16 @@ export const MenuLink = styled.a`
   }
 `;
 
-export const Login = styled.p`
-  padding: 3px;
-  margin: 2px;
-  border: 1px solid black;
+export const SubMenuDetails = styled.details`
+  width: 100%;
+`;
+
+export const SubMenuSummary = styled.summary`
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
 `;

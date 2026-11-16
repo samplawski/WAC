@@ -1,169 +1,86 @@
-import { useEffect, useRef, useState } from "react";
 import {
   Clock,
   Login,
   Logo,
-  Navigation,
   RightSection,
+  Navigation,
   Wrapper,
   MenuWrapper,
-  MenuList,
-  MenuItem,
-  MenuLink,
-  MenuGroup,
+  PopoverMenu,
   SubMenuList,
-  MenuGroupButton,
+  SubMenuLink,
+  SubMenuDetails,
+  SubMenuSummary,
 } from "./styled";
 
 const Header = () => {
-  const [navigationMenu, setNavigationMenu] = useState(false);
-
-  const closeNavigationMenu = () => {
-    setNavigationMenu(false);
-    setExpandedMenuGroup(null);
-  };
-
-  const handleNavigationMenu = () => {
-    if (navigationMenu) {
-      setExpandedMenuGroup(null);
-    }
-    setNavigationMenu((previous) => !previous);
-  };
-
-  const [expandedMenuGroup, setExpandedMenuGroup] = useState<
-    "chamber" | "male" | "admin" | null
-  >(null);
-
-  const handleExpandedMenuGroup = (group: "chamber" | "male" | "admin") => {
-    if (expandedMenuGroup === group) {
-      setExpandedMenuGroup(null);
-    } else {
-      setExpandedMenuGroup(group);
-    }
-    console.log("kliknięto MenuGroup");
-  };
-
-  const menuWrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        menuWrapperRef.current &&
-        !menuWrapperRef.current.contains(event.target as Node)
-      ) {
-        closeNavigationMenu();
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeNavigationMenu();
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
   return (
     <Wrapper>
       <Clock>data</Clock>
       <Logo>WAC</Logo>
       <RightSection>
         <Navigation>
-          <MenuWrapper ref={menuWrapperRef}>
-            <button
-              type="button"
-              aria-expanded={navigationMenu}
-              aria-controls="navigation-menu"
-              onClick={handleNavigationMenu}
-            >
+          <MenuWrapper>
+            <button type="button" popoverTarget="main-menu">
               Menu
             </button>
-            {navigationMenu && (
-              <MenuList id="navigation-menu">
-                <MenuItem>
-                  <MenuLink href="/">Strona główna</MenuLink>
-                </MenuItem>
 
-                <MenuGroup>
-                  <MenuGroupButton
-                    type="button"
-                    aria-expanded={expandedMenuGroup === "chamber"}
-                    aria-controls="chamber-submenu"
-                    onClick={() => handleExpandedMenuGroup("chamber")}
-                  >
-                    Chór kameralny
-                  </MenuGroupButton>
-                  {expandedMenuGroup === "chamber" && (
-                    <SubMenuList id="chamber-submenu">
+            <PopoverMenu id="main-menu" popover="auto">
+              <ul>
+                <li>
+                  <a href="/">Strona główna</a>
+                </li>
+                <li>
+                  <SubMenuDetails name="main-submenu">
+                    <SubMenuSummary>Chór kameralny</SubMenuSummary>
+                    <SubMenuList>
                       <li>
-                        <MenuLink href="/">Nuty</MenuLink>
+                        <SubMenuLink href="/">Nuty</SubMenuLink>
                       </li>
                       <li>
-                        <MenuLink href="/">Kalendarz</MenuLink>
+                        <SubMenuLink href="/">Kalendarz</SubMenuLink>
                       </li>
                     </SubMenuList>
-                  )}
-                </MenuGroup>
+                  </SubMenuDetails>
+                </li>
 
-                <MenuGroup>
-                  <MenuGroupButton
-                    type="button"
-                    aria-expanded={expandedMenuGroup === "male"}
-                    aria-controls="male-submenu"
-                    onClick={() => handleExpandedMenuGroup("male")}
-                  >
-                    Chór męski
-                  </MenuGroupButton>
-                  {expandedMenuGroup === "male" && (
-                    <SubMenuList id="male-submenu">
+                <li>
+                  <SubMenuDetails name="main-submenu">
+                    <SubMenuSummary>Chór męski</SubMenuSummary>
+                    <SubMenuList>
                       <li>
-                        <MenuLink href="/">Nuty</MenuLink>
+                        <SubMenuLink href="/">Nuty</SubMenuLink>
                       </li>
                       <li>
-                        <MenuLink href="/">Kalendarz</MenuLink>
+                        <SubMenuLink href="/">Kalendarz</SubMenuLink>
                       </li>
                     </SubMenuList>
-                  )}
-                </MenuGroup>
-
-                <MenuGroup>
-                  <MenuGroupButton
-                    type="button"
-                    aria-expanded={expandedMenuGroup === "admin"}
-                    aria-controls="admin-submenu"
-                    onClick={() => handleExpandedMenuGroup("admin")}
-                  >
-                    Administracja
-                  </MenuGroupButton>
-                  {expandedMenuGroup === "admin" && (
-                    <SubMenuList id="admin-submenu">
+                  </SubMenuDetails>
+                </li>
+                <li>
+                  <SubMenuDetails name="main-submenu">
+                    <SubMenuSummary>Administracja</SubMenuSummary>
+                    <SubMenuList>
                       <li>
-                        <MenuLink href="/">Katalog nut</MenuLink>
+                        <SubMenuLink href="/">Katalog nut</SubMenuLink>
                       </li>
                       <li>
-                        <MenuLink href="/">Kalendarz</MenuLink>
+                        <SubMenuLink href="/">Kalendarz</SubMenuLink>
                       </li>
                       <li>
-                        <MenuLink href="/">Członkowie</MenuLink>
+                        <SubMenuLink href="/">Członkowie</SubMenuLink>
                       </li>
                     </SubMenuList>
-                  )}
-                </MenuGroup>
-
-                <MenuItem>
-                  <MenuLink href="/">
-                    Strona główna — bardzo długa nazwa testow
-                  </MenuLink>
-                </MenuItem>
-              </MenuList>
-            )}
+                  </SubMenuDetails>
+                </li>
+                <li>
+                  <button type="button" popoverTarget="long-menu">
+                    Strona główna — bardzo długa nazwa testow, aby sprawdzić
+                    zawijanie długiego tekstu w Menu
+                  </button>
+                </li>
+              </ul>
+            </PopoverMenu>
           </MenuWrapper>
         </Navigation>
         <Login>Login</Login>
