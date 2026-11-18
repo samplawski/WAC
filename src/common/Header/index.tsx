@@ -1,5 +1,7 @@
+import { useEffect, useRef } from "react";
+import Clock from "../Clock/index.tsx";
 import {
-  Clock,
+  ClockWrapper,
   Login,
   Logo,
   RightSection,
@@ -11,12 +13,37 @@ import {
   SubMenuLink,
   SubMenuDetails,
   SubMenuSummary,
+  SubMenuItem,
 } from "./styled";
 
 const Header = () => {
+  const menuRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const menu = menuRef.current;
+
+    if (!menu) return;
+
+    const handleToggle = (event: ToggleEvent) => {
+      if (event.newState === "closed") {
+        menu
+          .querySelectorAll<HTMLDetailsElement>("details[open]")
+          .forEach((item) => {
+            item.open = false;
+          });
+      }
+    };
+
+    menu.addEventListener("toggle", handleToggle);
+
+    return () => {
+      menu.removeEventListener("toggle", handleToggle);
+    };
+  }, []);
+
   return (
     <Wrapper>
-      <Clock>data</Clock>
+      <Clock />
       <Logo>WAC</Logo>
       <RightSection>
         <Navigation>
@@ -25,7 +52,16 @@ const Header = () => {
               Menu
             </button>
 
-            <PopoverMenu id="main-menu" popover="auto">
+            <PopoverMenu
+              ref={menuRef}
+              id="main-menu"
+              popover="auto"
+              onClick={(event) => {
+                if ((event.target as HTMLElement).closest("a")) {
+                  menuRef.current?.hidePopover();
+                }
+              }}
+            >
               <ul>
                 <li>
                   <a href="/">Strona główna</a>
@@ -34,12 +70,12 @@ const Header = () => {
                   <SubMenuDetails name="main-submenu">
                     <SubMenuSummary>Chór kameralny</SubMenuSummary>
                     <SubMenuList>
-                      <li>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Nuty</SubMenuLink>
-                      </li>
-                      <li>
+                      </SubMenuItem>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Kalendarz</SubMenuLink>
-                      </li>
+                      </SubMenuItem>
                     </SubMenuList>
                   </SubMenuDetails>
                 </li>
@@ -48,12 +84,12 @@ const Header = () => {
                   <SubMenuDetails name="main-submenu">
                     <SubMenuSummary>Chór męski</SubMenuSummary>
                     <SubMenuList>
-                      <li>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Nuty</SubMenuLink>
-                      </li>
-                      <li>
+                      </SubMenuItem>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Kalendarz</SubMenuLink>
-                      </li>
+                      </SubMenuItem>
                     </SubMenuList>
                   </SubMenuDetails>
                 </li>
@@ -61,15 +97,15 @@ const Header = () => {
                   <SubMenuDetails name="main-submenu">
                     <SubMenuSummary>Administracja</SubMenuSummary>
                     <SubMenuList>
-                      <li>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Katalog nut</SubMenuLink>
-                      </li>
-                      <li>
+                      </SubMenuItem>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Kalendarz</SubMenuLink>
-                      </li>
-                      <li>
+                      </SubMenuItem>
+                      <SubMenuItem>
                         <SubMenuLink href="/">Członkowie</SubMenuLink>
-                      </li>
+                      </SubMenuItem>
                     </SubMenuList>
                   </SubMenuDetails>
                 </li>

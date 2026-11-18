@@ -6,7 +6,7 @@ export const Wrapper = styled.header`
   grid-template-columns: 1fr auto 1fr;
 `;
 
-export const Clock = styled.p`
+export const ClockWrapper = styled.p`
   justify-self: start;
   text-align: left;
   border: 1px solid red;
@@ -70,7 +70,7 @@ export const PopoverMenu = styled.nav`
     list-style: none;
   }
 
-  li {
+  > ul > li {
     margin: 0;
     padding: 0;
   }
@@ -128,4 +128,8 @@ export const SubMenuSummary = styled.summary`
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }
+`;
+
+export const SubMenuItem = styled.li`
+  padding-left: 22px;
 `;
