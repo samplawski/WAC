@@ -4,12 +4,16 @@ export const Wrapper = styled.header`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-`;
 
-export const ClockWrapper = styled.p`
-  justify-self: start;
-  text-align: left;
-  border: 1px solid red;
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "clock"
+      "right";
+  }
 `;
 
 export const Login = styled.p`
@@ -22,6 +26,10 @@ export const Logo = styled.h1`
   justify-self: center;
   text-align: center;
   border: 1px solid blue;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+    grid-area: logo;
+  }
 `;
 
 export const RightSection = styled.div`
@@ -32,6 +40,12 @@ export const RightSection = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   gap: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+    grid-area: right;
+    justify-self: center;
+    margin-left: 0;
+  }
 `;
 
 export const Navigation = styled.nav`

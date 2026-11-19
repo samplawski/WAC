@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Clock from "../Clock/index.tsx";
 import {
-  ClockWrapper,
+  // ClockWrapper,
   Login,
   Logo,
   RightSection,

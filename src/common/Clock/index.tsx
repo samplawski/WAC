@@ -1,4 +1,5 @@
 import { useCurrentDate } from "./useCurrentDate";
+import { ClockText } from "./styled";
 
 const formDate: Intl.DateTimeFormatOptions = {
   weekday: "long",
@@ -20,10 +21,10 @@ const Clock = () => {
   const formattedCurrentTime = date.toLocaleTimeString("pl-PL", formTime);
 
   return (
-    <p>
+    <ClockText>
       {" "}
       Jest {formattedCurrentDate} roku, godzina: {formattedCurrentTime}
-    </p>
+    </ClockText>
   );
 };
 
