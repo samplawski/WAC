@@ -1,46 +1,48 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+  width: 100%;
 
+  /* stylelint-disable-next-line media-query-no-invalid */
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
     display: grid;
-    place-items: center;
     grid-template-columns: 1fr;
     grid-template-areas:
       "logo"
       "clock"
       "right";
+    place-items: center;
   }
 `;
 
 export const Login = styled.p`
-  padding: 3px;
   margin: 2px;
+  padding: 3px;
   border: 1px solid black;
 `;
 
 export const Logo = styled.h1`
   justify-self: center;
-  text-align: center;
   border: 1px solid blue;
+  text-align: center;
 
+  /* stylelint-disable-next-line media-query-no-invalid */
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
     grid-area: logo;
   }
 `;
 
 export const RightSection = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+  align-items: center;
   margin-left: auto;
   border: 1px solid teal;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 10px;
 
+  /* stylelint-disable-next-line media-query-no-invalid */
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
     grid-area: right;
     justify-self: center;
@@ -49,10 +51,10 @@ export const RightSection = styled.div`
 `;
 
 export const Navigation = styled.nav`
-  padding: 3px;
-  margin: 2px;
-  border: 1px solid purple;
   position: relative;
+  margin: 2px;
+  padding: 3px;
+  border: 1px solid purple;
 `;
 
 export const MenuWrapper = styled.div`
@@ -62,19 +64,17 @@ export const MenuWrapper = styled.div`
 export const PopoverMenu = styled.nav`
   position: absolute;
   position-area: bottom;
+  box-sizing: border-box;
   justify-self: end;
-
-  margin: 6px 0 0;
-  padding: 8px;
   min-width: 200px;
   max-width: 280px;
-  box-sizing: border-box;
-  overflow-x: hidden;
-
-  background-color: ${({ theme }) => theme.colors.surface};
-  color: ${({ theme }) => theme.colors.background};
+  margin: 6px 0 0;
+  padding: 8px;
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadius.small};
+  color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.surface};
+  overflow-x: hidden;
 
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
 
@@ -96,11 +96,11 @@ export const PopoverMenu = styled.nav`
     padding: 8px 12px;
     border: none;
     border-radius: ${({ theme }) => theme.borderRadius.small};
-    background: transparent;
-    color: inherit;
     font: inherit;
     text-align: left;
     text-decoration: none;
+    color: inherit;
+    background: transparent;
     cursor: pointer;
   }
 
@@ -122,8 +122,8 @@ export const SubMenuList = styled.ul`
 
 export const SubMenuLink = styled.a`
   display: block;
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
@@ -136,8 +136,8 @@ export const SubMenuDetails = styled.details`
 
 export const SubMenuSummary = styled.summary`
   padding: 8px 12px;
-  cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius.small};
+  cursor: pointer;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
