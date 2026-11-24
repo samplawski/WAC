@@ -10,6 +10,8 @@ export default defineConfig({
       "repomix-output_wac - starter 2026.09.16.txt",
       "repomix-output_wac.txt",
       "WAC - opis i założenia.docx",
+      "src/assets/Facebook_Logo.png",
+      "src/assets/mail32.png",
       "**/*.svg",
     ],
   },
