@@ -33,15 +33,15 @@ export const FooterIcon = styled.img`
 `;
 
 export const SocialLinks = styled.div`
-  grid-area: social;
   display: flex;
+  grid-area: social;
   justify-content: space-between;
 
   /* stylelint-disable-next-line media-query-no-invalid */
   @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
     display: flex;
-    justify-content: center;
     gap: 24px;
+    justify-content: center;
   }
 `;
 
