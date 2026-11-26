@@ -76,6 +76,11 @@ export const PopoverMenu = styled.nav`
   background-color: ${({ theme }) => theme.colors.surface};
   overflow-x: hidden;
 
+  /* stylelint-disable-next-line media-query-no-invalid */
+  @media (max-width: ${({ theme }) => theme.breakpoint.mobileMax}) {
+    justify-self: center;
+  }
+
   /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
 
   ul {
